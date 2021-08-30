@@ -2,7 +2,7 @@ package com.springdemoannotations.demo;
 
 import org.springframework.stereotype.Component;
 
-@Component("tennisCoach")
+@Component // default bean ID will be class name with lowercase first letter (i.e. tennisCoach)
 public class TennisCoach implements Coach {
 
 
