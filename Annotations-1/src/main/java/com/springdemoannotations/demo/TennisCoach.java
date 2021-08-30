@@ -7,7 +7,8 @@ import org.springframework.stereotype.Component;
 public class TennisCoach implements Coach {
     private FortuneService fortuneService;
 
-    // use @Autowired to inject into the constructor automatically using spring
+    // use @Autowired to inject FortuneService into the constructor automatically using spring
+    // Spring scans for a component that implements the FortuneService interface!
     @Autowired
     public TennisCoach (FortuneService fortuneService){
         this.fortuneService = fortuneService;
