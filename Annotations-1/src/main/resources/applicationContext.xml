@@ -6,39 +6,10 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
-
-    <!-- load the properties file: sport.properties -->
-    <context:property-placeholder location="sport.properties"/>
-
-    <!-- Define your beans here -->
-
-    <!-- Define dependency bean -->
-    <bean id="myFortune" class="ioc.demo.HappyFortuneService"></bean>
-
-    <!-- Set up constructor injection -->
-    <bean id="myCoach" class="ioc.demo.TrackCoach">
-        <constructor-arg ref="myFortune"/> <!-- Inject dependency bean into the BaseballCoach
-                                                    constructor-->
-
-        <!-- Create object, call constructor, pass in object! Spring does all this-->
-    </bean>
-
-    <bean id="myCricketCoach" class="ioc.demo.CricketCoach">
-
-        <!-- set up setter injection -->
-        <property name="fortuneService" ref="myFortune"/> <!-- references same bean defined above , property defines
-                                property param for setter method in CricketCoach automatically-->
-        <property name="emailAddress" value="${foo.email}"/>
-        <property name="team" value="${foo.team}"/>
-    </bean>
-
-    <bean id="hockeyCoach" class="ioc.demo.HockeyCoach">
-        <property name="fortuneService" ref="myFortune"/>
-    </bean>
-
-
-
-
+    
+    <!-- add entry to enable component scanning -->
+    
+    <context:component-scan base-package="com.springdemoannotations.demo"/>
 </beans>
 
 
