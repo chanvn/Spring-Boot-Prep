@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!-- Define your beans here -->
+
+    <!-- Define dependency bean -->
+    <bean id="myFortune" class="ioc.demo.HappyFortuneService"></bean>
+
+    <bean id="myCoach" class="ioc.demo.TrackCoach" scope="prototype">
+        <constructor-arg ref="myFortune"/> <!-- Inject dependency bean into the BaseballCoach
+                                                    constructor-->
+
+        <!-- Create object, call constructor, pass in object! Spring does all this-->
+    </bean>
+
+    <!-- Set up constructor injection -->
+
+
+
+</beans>
+
+
+
+
+
