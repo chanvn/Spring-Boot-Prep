@@ -3,9 +3,15 @@ package com.springdemoannotations.demo;
 import org.springframework.stereotype.Component;
 
 @Component
-public class HockeyCoach implements Coach{
+public class HockeyCoach implements Coach {
+
     @Override
     public String getDailyWorkout() {
         return "Practice your slapshot!";
+    }
+
+    @Override
+    public String getDailyFortune() {
+        return null;
     }
 }
