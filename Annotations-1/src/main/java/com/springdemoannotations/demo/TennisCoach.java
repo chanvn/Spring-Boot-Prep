@@ -1,6 +1,7 @@
 package com.springdemoannotations.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component // default bean ID will be class name with lowercase first letter (i.e. tennisCoach)
@@ -9,6 +10,9 @@ public class TennisCoach implements Coach {
     // Can use field injection - @Autowired directly on the field to resolve the dependency, even for private fields
     // Spring will set the value behind the scenes - uses Java reflection
     @Autowired
+    // @Qualifier resolves the dependency injection by making it specific if there are multiple implementations of the
+    // same interface - specify using the class name but with first letter lowercase: default with @Component
+    @Qualifier("happyFortuneService")
     private FortuneService fortuneService;
 
     // define a default constructor
