@@ -32,9 +32,19 @@ public class TennisCoach implements Coach {
 
     //use @Autowired for a setter injection! Injects the dependency for this bean instance just like the constructor
     // injection
-    @Autowired
+/*    @Autowired
     public void setFortuneService(FortuneService fortuneService){
         System.out.println(">> TennisCoach: inside setFortuneService() method");
         this.fortuneService = fortuneService;
+    }*/
+
+    // can make your own method too and Autowire it to resolve the dependency
+    @Autowired
+    public void doSomeCrazyStuff(FortuneService fortuneService){
+        System.out.println(">> inside doSomeCrazyStuff method -- Doing some crazy stuff");
+        this.fortuneService = fortuneService;
     }
+
+
+
 }
