@@ -12,7 +12,7 @@ public class TennisCoach implements Coach {
     @Autowired
     // @Qualifier resolves the dependency injection by making it specific if there are multiple implementations of the
     // same interface - specify using the class name but with first letter lowercase: default with @Component
-    @Qualifier("happyFortuneService")
+    @Qualifier("randomFortuneService")
     private FortuneService fortuneService;
 
     // define a default constructor
