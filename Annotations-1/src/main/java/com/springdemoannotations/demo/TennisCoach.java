@@ -7,12 +7,18 @@ import org.springframework.stereotype.Component;
 public class TennisCoach implements Coach {
     private FortuneService fortuneService;
 
+    // define a default constructor
+    public TennisCoach() {
+        System.out.println(">> inside default constructor for class TennisCoach");
+    }
     // use @Autowired to inject FortuneService into the constructor automatically using spring
     // Spring scans for a component that implements the FortuneService interface!
+    /*
     @Autowired
     public TennisCoach (FortuneService fortuneService){
         this.fortuneService = fortuneService;
     }
+    */
 
     @Override
     public String getDailyWorkout() {
@@ -22,5 +28,13 @@ public class TennisCoach implements Coach {
     @Override
     public String getDailyFortune() {
         return fortuneService.getFortune();
+    }
+
+    //use @Autowired for a setter injection! Injects the dependency for this bean instance just like the constructor
+    // injection
+    @Autowired
+    public void setFortuneService(FortuneService fortuneService){
+        System.out.println(">> TennisCoach: inside setFortuneService() method");
+        this.fortuneService = fortuneService;
     }
 }
