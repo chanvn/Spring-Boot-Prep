@@ -2,9 +2,11 @@ package com.springdemoannotations.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component // default bean ID will be class name with lowercase first letter (i.e. tennisCoach)
+@Scope("prototype")
 public class TennisCoach implements Coach {
 
     // Can use field injection - @Autowired directly on the field to resolve the dependency, even for private fields
