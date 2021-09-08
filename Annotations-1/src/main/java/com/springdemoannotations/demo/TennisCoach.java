@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 @Component // default bean ID will be class name with lowercase first letter (i.e. tennisCoach)
-@Scope("prototype")
 public class TennisCoach implements Coach {
 
     // Can use field injection - @Autowired directly on the field to resolve the dependency, even for private fields
@@ -20,6 +22,19 @@ public class TennisCoach implements Coach {
     // define a default constructor
     public TennisCoach() {
         System.out.println(">> inside default constructor for class TennisCoach");
+    }
+
+    // define my init method
+    @PostConstruct
+    public void doMyStartupStuff(){
+        System.out.println(">> TennisCoach: inside doMyStartupStuff");
+    }
+
+    // define my destroy method
+    // done before program destroyed
+    @PreDestroy
+    public void doMyCleanupStuff(){
+        System.out.println(">> TennisCoach: inside doMyCleanupStuff");
     }
 
     // Constructor injection

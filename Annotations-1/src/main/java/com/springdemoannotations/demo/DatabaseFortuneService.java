@@ -2,6 +2,7 @@ package com.springdemoannotations.demo;
 
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -37,6 +38,27 @@ public class DatabaseFortuneService implements FortuneService {
         }
     }
 
+    @PostConstruct
+    public void readFile(){
+        File theFile = new File(fileName);
+
+        System.out.println("STARTING POST CONSTRUCT FOR FORTUNE SERVICE");
+        System.out.println("File exists?: "+theFile.exists());
+
+        // read fortunes from file
+        try (BufferedReader br = new BufferedReader(
+                new FileReader(theFile))) {
+
+            String tempLine;
+
+            while ((tempLine = br.readLine()) != null) {
+                System.out.println(tempLine);;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public String getFortune() {
         int index = rng.nextInt(fortunes.size());
